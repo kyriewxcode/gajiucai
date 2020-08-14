@@ -16,7 +16,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     }
 
-
+    public bool GetDashDown()
+    {
+        return Input.GetButtonDown("Dash");
+    }
 
 
 
