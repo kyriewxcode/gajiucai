@@ -8,6 +8,7 @@ public class Trap : MonoBehaviour
     public float damage;//伤害
     public float activeTime;//激活时间
     protected string _name;//名字
+    public Vector3 dir;//方向
     public string Name
     {
         set
@@ -26,18 +27,12 @@ public class Trap : MonoBehaviour
         get;
     }
 
-    public EnumEntityType EntityType
-    {
-        protected set;
-        get;
-    }
-
     #endregion
 
     #region MonoBehaviour自身方法
     protected void Update() 
     {
-        UpdateEntity(Time.deltaTime);
+        UpdateEntity(Time.deltaTime,dir);
     }
 
     protected void OnDestroy()
@@ -51,13 +46,12 @@ public class Trap : MonoBehaviour
     {
         ID=id;//默认名字为id
         Name=id.ToString();
-        EntityType = EnumEntityType.None;//子类中重写实体类型和名字
     }
     public virtual void EnableEntity(Vector3 pos)//启用陷阱
     {
         gameObject.transform.position = pos;
     }
-    protected virtual void UpdateEntity(float detaTime)//更新陷阱
+    protected virtual void UpdateEntity(float detaTime,Vector3 dir)//更新陷阱
     {
 
     }
@@ -119,16 +113,6 @@ public class Trap : MonoBehaviour
         void RemoveCmd(EnumCmdType cmd);//移除命令
         void ReceiveCmd(EnumCmdType cmd,ICmd data);//接收命令
     }
-    public enum EnumEntityType//陷阱类型
-    {
-        None,
-        屠龙宝刀,//1
-        江南皮革厂,//2
-        游泳健身,//3
-        弹窗, //4
-
-    }
-    
     public enum EnumCmdType//陷阱命令
     {
         None,

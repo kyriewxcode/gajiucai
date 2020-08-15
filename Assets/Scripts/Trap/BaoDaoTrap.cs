@@ -8,13 +8,10 @@ public class BaoDaoTrap : Trap
     {
         ID = id;
         Name = "宝刀"+id.ToString();
-        EntityType = EnumEntityType.屠龙宝刀;
     }
 
-    protected override void UpdateEntity(float detaTime)
+    protected override void UpdateEntity(float detaTime,Vector3 dir)
     {
 
     }
-    
-    
 }
