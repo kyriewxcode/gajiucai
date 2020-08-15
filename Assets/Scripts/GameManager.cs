@@ -4,6 +4,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     private static GameManager gm;
 
+    public bool imRich;
+    public bool imPoor;
+
     public static GameManager getGM{
         get{
             return gm;
@@ -15,10 +18,12 @@ public class GameManager : MonoBehaviour {
     public float moodMultiplier=100;//买到好东西的时候回到100
     void Awake () {
         gm = this;
-        
+        GameObject.DontDestroyOnLoad(gameObject);
     }
     public void Init()
     {
+        imPoor = false;
+        imRich = false;
         HP = 20000;
         Mood = 100;
     }

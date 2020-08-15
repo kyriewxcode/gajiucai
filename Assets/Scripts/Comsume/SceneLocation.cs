@@ -17,7 +17,7 @@ public class SceneLocation : MonoBehaviour
             Debug.Log("碰到");
             if(type==SceneType.售楼中心)
             {
-                if(GameManager.getGM.HP>=5000000f)
+                if(GameManager.getGM.HP>=1000000f)
                     Win();
                 else
                     GameManager.getGM.reduceMood(10f);
@@ -60,6 +60,10 @@ public class SceneLocation : MonoBehaviour
     }
     void Win()
     {
+        GameManager.getGM.imRich = true;
+
+        Debug.Log("胜利");
         //那不可能赢
     }
+
 }
