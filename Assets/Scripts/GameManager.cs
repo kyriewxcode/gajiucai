@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour {
     public bool imRich;
     public bool imPoor;
 
+    public int[] ConsumeTimesCount = new int[13];
+
+    public float ConsumemoneyCount;
+
     public static GameManager getGM{
         get{
             return gm;

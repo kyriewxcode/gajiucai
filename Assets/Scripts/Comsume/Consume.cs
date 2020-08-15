@@ -41,6 +41,7 @@ public class Consume : MonoBehaviour
             {
                 succesBuy();
                 //触发对话  成功购买
+                Debug.Log("成功购买");
             }
             else
             {
@@ -55,6 +56,8 @@ public class Consume : MonoBehaviour
         thisSprite.enabled = false;
         GameManager.getGM.reduceHP(moneyReduce);
         GameManager.getGM.addMood(moodAdd);
+        GameManager.getGM.ConsumeTimesCount[ID]++;
+        GameManager.getGM.ConsumemoneyCount += moneyReduce;
     }
     void Refresh()
     {

@@ -10,7 +10,19 @@ public class EndGameDataManager : MonoBehaviour
     void Start()
     {
         hp = GetComponent<Text>();
-        hp.text = ("你还剩"+GameManager.getGM.HP+"钱");
+        if (GameManager.getGM.imRich) {
+            hp.text = ("你还剩" + GameManager.getGM.HP + "钱");
+        }
+
+        else
+        {
+            hp.text = ("你穷死了！！");
+
+        }
+        
+
+        
+
     }
 
     
