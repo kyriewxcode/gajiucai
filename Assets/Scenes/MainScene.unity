@@ -273,7 +273,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.49803922}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -516,7 +515,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19441736, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -590,7 +588,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.49803922}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -621,6 +618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436600827}
+  - component: {fileID: 436600828}
   - component: {fileID: 436600826}
   m_Layer: 0
   m_Name: TrapManager
@@ -638,12 +636,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 436600825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f5287e8a76fd045a8e2d0e81e33616, type: 3}
+  m_Script: {fileID: 11500000, guid: 262db0c5ac7ab074b90627a4647a3aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20000
-  Mood: 100
-  moodMultiplier: 100
+  DecimationNum: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000020000000300000003000000030000000300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  trapGroupData: {fileID: 4900000, guid: 30cd9d8a3e1e44c489d02b78509cb57b, type: 3}
+  m_trapEvent: {fileID: 436600828}
 --- !u!4 &436600827
 Transform:
   m_ObjectHideFlags: 0
@@ -658,6 +656,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &436600828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436600825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f016ef05ae30409bc486cf2922e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 0
+  TrapType: 0
+  area:
+  - 0
+  - 0
+  - 0
+  - 0
+  dir: {x: 0, y: 0, z: 0}
+  dirNum: 0
+  trap: {fileID: 0}
+  trapPrefabs:
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
+  - {fileID: 5190594397548008229, guid: 19d7276e1303d1e449084a14a6f3f5bb, type: 3}
 --- !u!1 &460704775
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +859,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.93989503, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
