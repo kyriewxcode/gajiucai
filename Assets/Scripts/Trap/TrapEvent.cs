@@ -27,11 +27,12 @@ public class TrapEvent : MonoBehaviour
      //读取数据，为每个事件添加配置   
     }
     public void EventStart()
-    {
+    {   
+        
         GameObject trapObject = Instantiate(trapPrefabs[TrapType]);//生成TrapType陷阱
         trap = trapObject.GetComponent<Trap>();
         trap.Init(TrapType);
-
+        
         Vector3 pos = new Vector3(Random.Range(area[0],area[1]),Random.Range(area[2],area[3]),0f);
         trap.EnableEntity(pos);
         switch(dirNum)
