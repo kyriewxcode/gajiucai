@@ -369,6 +369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47dc19b6c58e7e4997261c5b84fc931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  _name: 
+  _assestsName: 
+  refreshTime: 0
+  moneyReduce: 0
+  moodAdd: 0
+  type: 0
 --- !u!1 &148221135
 GameObject:
   m_ObjectHideFlags: 0
