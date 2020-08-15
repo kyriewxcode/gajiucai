@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public Slider hpSlider;
     public Slider moodSlider;
+    
     void Start()
     {
         GameManager.getGM.Init();
@@ -17,8 +18,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         moodSlider.value=GameManager.getGM.Mood/100f;
-        Debug.Log(GameManager.getGM.Mood);
-        hpSlider.value=GameManager.getGM.HP/20000f;
+        //hpSlider.value=GameManager.getGM.HP/20000f;
     }
 
     IEnumerator HpAdd()
@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
         {
             yield return new WaitForSeconds(10);
             GameManager.getGM.addHP(5000);
+            Debug.Log(GameManager.getGM.HP);
         }
         yield return null;
     }
@@ -36,6 +37,7 @@ public class UIManager : MonoBehaviour
         while(GameManager.getGM.Mood>=0)
         {
             GameManager.getGM.reduceMood(2.0f);
+            GameManager.getGM.moodMultiplier-=2.0f;
             yield return new WaitForSeconds(1);
         }
         yield return null;

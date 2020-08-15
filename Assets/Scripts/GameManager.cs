@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public float HP = 20000;
     public float Mood = 100;
-
+    public float moodMultiplier=100;//买到好东西的时候回到100
     void Awake () {
         gm = this;
         
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
         if(Mood>100) Mood=100;
     }
     public void reduceMood(float count){
-        Mood-=count;
+        Mood=Mood - count*moodMultiplier/100;
     }
     
 }
