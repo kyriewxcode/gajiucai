@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaoDaoTrap : Trap
 {
+    Collider2D coll;
     public override void Init(int id)
     {
         ID = id;
@@ -12,6 +13,7 @@ public class BaoDaoTrap : Trap
 
     protected override void UpdateEntity(float detaTime,Vector3 dir)
     {
-
+        
     }
+    
 }

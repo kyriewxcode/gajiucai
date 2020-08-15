@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerController : MonoBehaviour
 {
 
@@ -11,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float VerticalSpeed;
     public float MovementSharpness;
 
-    public float DashingCooldownTime=3f;
+    public float DashingCooldownTime=3f; //Dash冷却时间
     float DashCDTimeCount;
     public float DashingTime =1f;
     float DashTimeCount;
@@ -22,9 +21,10 @@ public class PlayerController : MonoBehaviour
 
     public bool IsDashing { get; private set; }
 
-   public Camera m_camera;
     PlayerInputHandler m_playerInputHandler;
-    // Start is called before the first frame update
+
+    float xScale;
+    float yScale;
     private void Awake()
     {
         m_playerInputHandler = GetComponent<PlayerInputHandler>();
@@ -32,57 +32,60 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        
+        xScale = transform.localScale.x;
+        yScale = transform.localScale.y;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         MovementHandler();
     }
 
-
+    private void FixedUpdate() {
+        if (IsDashing && DashTimeCount<DashingTime)
+        {
+            speedModifier = DashSpeedMultiplier;
+            DashTimeCount += Time.deltaTime;
+            Pool.instance.GetFormPool();
+        }
+    }
 
     void MovementHandler()
     {
 
         Dash();
         Vector3 movementInput = m_playerInputHandler.GetMoveInput();
+        if(movementInput.x<-0.1f)
+            transform.localScale=new Vector3(-xScale,yScale,1);
+        else if(movementInput.x>0.1f)
+            transform.localScale=new Vector3(xScale,yScale,1);
+        
         Vector3 targetVelocity = new Vector3(movementInput.x*HorizontalSpeed,movementInput.y*VerticalSpeed,0f)*speedModifier;
         characterMovementVelocity = Vector3.Lerp(characterMovementVelocity,targetVelocity,MovementSharpness*Time.deltaTime);
-       
-        
         GroundCheck();
         
-            transform.position += characterMovementVelocity * Time.deltaTime;
+        transform.position += characterMovementVelocity * Time.deltaTime;
         
     }
 
     void Dash()
     {
-        if (m_playerInputHandler.GetDashDown()&&DashCDTimeCount>=DashingCooldownTime)
+        if (m_playerInputHandler.GetDashDown() && DashCDTimeCount>=DashingCooldownTime)
         {
             DashTimeCount = 0f;
             IsDashing = true;
         }
-        if (IsDashing&&DashTimeCount<DashingTime)
-        {
-            speedModifier = DashSpeedMultiplier;
-            DashTimeCount += Time.deltaTime;
-        }
-        if (DashTimeCount>=DashingTime)
+        if (DashTimeCount >= DashingTime)
         {
             DashCDTimeCount = 0f;
             speedModifier = 1f;
             IsDashing = false;
             DashTimeCount = 0f;
         }
-        if (!IsDashing&&DashCDTimeCount<DashingCooldownTime)
+        if (!IsDashing && DashCDTimeCount<DashingCooldownTime)
         {
             DashCDTimeCount += Time.deltaTime;
         }
-        Debug.Log(DashCDTimeCount);
-        Debug.Log(DashTimeCount);
     }
 
     void GroundCheck()
@@ -94,7 +97,7 @@ public class PlayerController : MonoBehaviour
         Vector3 leftPoint = startPoint + new Vector3(-1f,0f,0f);
         Vector3 rightPoint = startPoint + new Vector3(1f,0f,0f);
 
-        RaycastHit2D rayUp = Physics2D.Raycast(upPoint,Vector3.forward,1f,1<<LayerMask.NameToLayer ("Ground"));
+        RaycastHit2D rayUp = Physics2D.Raycast(upPoint, Vector3.forward, 1f, 1 << LayerMask.NameToLayer ("Ground"));
         
         RaycastHit2D rayDown = Physics2D.Raycast(downPoint, Vector3.forward, 1f, 1 << LayerMask.NameToLayer("Ground"));
         
@@ -119,9 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             characterMovementVelocity = new Vector3(Mathf.Clamp(characterMovementVelocity.x,Mathf.NegativeInfinity,0f),characterMovementVelocity.y,0f);
         }
-        
-          
-        
     }
-
+    
+    
 }
