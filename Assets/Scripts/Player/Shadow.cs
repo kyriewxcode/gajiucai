@@ -7,7 +7,6 @@ public class Shadow : MonoBehaviour
     private Transform player;
     SpriteRenderer thisSprite;
     SpriteRenderer playerSprite;
-    Color color = new Color(1,1,1,1);
 
     [Header("时间控制参数")]
     public float activeTime;//暗影显示时间
@@ -16,6 +15,7 @@ public class Shadow : MonoBehaviour
     [Header("不透明度控制")]
     public float alphaSet;//初始值
     public float alphaMuti;
+    public Color color;
 
     private void OnEnable() {
         player=GameObject.FindGameObjectWithTag("Player").transform;
@@ -24,11 +24,10 @@ public class Shadow : MonoBehaviour
         color.a = alphaSet;
         thisSprite.sprite = playerSprite.sprite;
         transform.position = player.position;
-        //transform.localScale = player.localScale;
         transform.rotation = player.rotation;
-
         activeStart = Time.time;
     }
+    
     void Update()
     {
         color.a *= alphaMuti;
