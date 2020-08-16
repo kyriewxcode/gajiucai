@@ -10,6 +10,11 @@ public class Trap : MonoBehaviour
     protected string _name;//名字
     public Vector3 dir;//方向
     public float LifeTime;
+    public bool IsTriggered;
+   public TrapEventManager m_TrapEventManager;
+
+
+
     public string Name
     {
         set
@@ -44,9 +49,13 @@ public class Trap : MonoBehaviour
 
         UpdateEntity(Time.deltaTime, dir);
     }
-
+    private void Awake()
+    {
+        
+    }
     protected void OnDestroy()
     {
+        
         DestroyEntity();
     }
     #endregion
@@ -54,6 +63,7 @@ public class Trap : MonoBehaviour
     #region 虚方法 ---初始化、更新、启用、禁用、销毁
     public virtual void Init(int id)//初始化
     {
+        
         ID = id;//默认名字为id
         Name = id.ToString();
     }
@@ -72,6 +82,7 @@ public class Trap : MonoBehaviour
     }
     public virtual void DestroyEntity()//摧毁陷阱
     {
+        
         Destroy(gameObject) ;
     }
     #endregion

@@ -9,7 +9,7 @@ public class Popup360 : Trap
 
         ID = id;
         Name = "360" + id.ToString();
-
+        m_TrapEventManager = FindObjectOfType<TrapEventManager>();
 
 
     }
@@ -17,7 +17,9 @@ public class Popup360 : Trap
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.getGM.ReduceHP(damage);
+            IsTriggered = true;
+            m_TrapEventManager.m_sound.Play();
+            GameManager.getGM.ReduceMood(damage);
             Debug.Log("你看到弹窗十分烦躁 心情下降了" + damage);
             
         }

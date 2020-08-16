@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970e9fa3db2f383469dce2277dd83ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 500
+  damage: 4000
   activeTime: 0
   dir: {x: 0, y: 0, z: 0}
   LifeTime: 8
+  IsTriggered: 0
+  m_TrapEventManager: {fileID: 0}
 --- !u!50 &2050032329777141521
 Rigidbody2D:
   serializedVersion: 4
@@ -77,6 +79,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8085743539688805594}
     m_Modifications:
+    - target: {fileID: 4114588652680983972, guid: 4be8ec6604cc6684b920a9de56868923,
+        type: 3}
+      propertyPath: m_MaxColliderNumber
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4114588652680983973, guid: 4be8ec6604cc6684b920a9de56868923,
         type: 3}
       propertyPath: m_LocalPosition.x

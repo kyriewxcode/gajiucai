@@ -9,6 +9,7 @@ public class Mai1Song1 : Trap
 
         ID = id;
         Name = "买一送一" + id.ToString();
+        m_TrapEventManager = FindObjectOfType<TrapEventManager>();
 
 
         
@@ -17,6 +18,9 @@ public class Mai1Song1 : Trap
     {
         if (collision.gameObject.tag == "Player")
         {
+
+            IsTriggered = true;
+            m_TrapEventManager.m_sound.Play();
             GameManager.getGM.ReduceHP(damage);
             Debug.Log("你忍不住剁手，花了" + damage + "块");
             Destroy(gameObject);

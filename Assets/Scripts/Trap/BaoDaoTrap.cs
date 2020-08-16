@@ -8,15 +8,16 @@ public class BaoDaoTrap : Trap
    
     float initTime;
     public float hitDelay;
-    bool IsTriggered;
+    
     public override void Init(int id)
     {
         IsTriggered = false;
         ID = id;
         Name = "宝刀"+id.ToString();
         initTime = Time.time;
-       
-        
+        m_TrapEventManager = FindObjectOfType<TrapEventManager>();
+
+
     }
 
     protected override void UpdateEntity(float detaTime,Vector3 dir)
@@ -31,6 +32,7 @@ public class BaoDaoTrap : Trap
 
             if (collision.gameObject.tag=="Player"&& IsTriggered == false)
             {
+                m_TrapEventManager.m_sound.Play();
                 GameManager.getGM.ReduceHP(damage);
                 Debug.Log("你被🔪砍中了，减"+damage+"元");
                 IsTriggered = true;

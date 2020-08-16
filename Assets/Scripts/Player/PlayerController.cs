@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float DashSpeedMultiplier = 2f;
     float speedModifier = 1f;
 
+    float steamAttackCD = 0.3f;
+    float LastSteamAttackTime;
+
     Vector3 characterMovementVelocity { get; set; }
 
     public bool IsDashing { get; private set; }
@@ -171,10 +174,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Steam")
         {
+            if (Time.time>LastSteamAttackTime+steamAttackCD)
+            {
 
-            GameManager.getGM.ReduceHP(other.GetComponentInParent<SteamSale>().damage);
-            Debug.Log("Steam打折 你又花了" + other.GetComponentInParent<SteamSale>().damage + "块");
-            
+                TrapEventManager a = FindObjectOfType<TrapEventManager>();
+                a.m_sound.Play();
+                GameManager.getGM.ReduceHP(other.GetComponentInParent<SteamSale>().damage);
+                LastSteamAttackTime = Time.time;
+                Debug.Log("Steam打折 你又花了" + other.GetComponentInParent<SteamSale>().damage + "块");
+            }
 
         }
     }

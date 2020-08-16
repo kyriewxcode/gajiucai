@@ -34,7 +34,7 @@ public class TrapEvent : MonoBehaviour
         trap.Init(TrapType);
         
         Vector3 pos = new Vector3(Random.Range(area[0],area[1]),Random.Range(area[2],area[3]),0f);
-        if (TrapType == 4)
+        if (TrapType == 3)
         {
              pos = Vector3.zero;
         }

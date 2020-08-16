@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2787209646968683818}
   - component: {fileID: 2787209646968683821}
   - component: {fileID: 2787209646968683819}
+  - component: {fileID: 6805454099318752940}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f5287e8a76fd045a8e2d0e81e33616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moodChange: {fileID: 0}
+  hpChange: {fileID: 0}
   imRich: 0
   imPoor: 0
   BGM:
@@ -63,6 +66,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0fa4e817cc9b6834584e92e693bca5a5, type: 3}
   ConsumeTimesCount: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   ConsumemoneyCount: 0
+  m_Em: {fileID: 0}
   HP: 20000
   wages: 5000
   Mood: 100
@@ -163,3 +167,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6805454099318752940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787209646968683823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5387deecdd573274bbb3601455c1f8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2787209646968683823}

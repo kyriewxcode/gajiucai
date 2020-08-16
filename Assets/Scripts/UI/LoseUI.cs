@@ -22,10 +22,17 @@ public class LoseUI : MonoBehaviour
             }
         }
         money.text = GameManager.getGM.ConsumemoneyCount.ToString()+"元";
+
+        Object.Destroy(GameManager.getGM);
     }
 
     public void Restart()
     {
+
+
+
+        
+
         SceneManager.LoadScene(1);
     }
     public void ExitGame()

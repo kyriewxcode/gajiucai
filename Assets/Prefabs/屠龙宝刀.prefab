@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6adb9c2136e5d4b4a9a011df6b4fca96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2000
+  damage: 2500
   activeTime: 0
   dir: {x: 0, y: 0, z: 0}
-  LifeTime: 3
-  coll: {fileID: 0}
+  LifeTime: 4
+  IsTriggered: 0
+  m_TrapEventManager: {fileID: 0}
   hitDelay: 0
 --- !u!50 &1779039594535867787
 Rigidbody2D:
@@ -92,12 +93,12 @@ PrefabInstance:
     - target: {fileID: 8555279182544086159, guid: 73c65f9cfe40ed543af827e166840683,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.73
+      value: 3.31
       objectReference: {fileID: 0}
     - target: {fileID: 8555279182544086159, guid: 73c65f9cfe40ed543af827e166840683,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.65
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8555279182937710997, guid: 73c65f9cfe40ed543af827e166840683,
         type: 3}

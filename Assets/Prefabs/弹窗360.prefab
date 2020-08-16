@@ -45,10 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c070c79467c06794d9ff1eb1cc1ab6dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   activeTime: 0
   dir: {x: 0, y: 0, z: 0}
   LifeTime: 8
+  IsTriggered: 0
+  m_TrapEventManager: {fileID: 0}
 --- !u!50 &8901661226673785014
 Rigidbody2D:
   serializedVersion: 4

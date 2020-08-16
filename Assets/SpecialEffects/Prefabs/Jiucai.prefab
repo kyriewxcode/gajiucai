@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3694908557238991821}
-  - component: {fileID: 3694908557238991822}
   - component: {fileID: 3694908557238991823}
+  - component: {fileID: 5264719800177376437}
   m_Layer: 8
   m_Name: Jiucai
   m_TagString: Untagged
@@ -33,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3694908557238991822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3694908557238991819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d89ea85718200d4409618ea20a36805e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_particleSystem: {fileID: 3694908557893780465}
 --- !u!50 &3694908557238991823
 Rigidbody2D:
   serializedVersion: 4
@@ -67,6 +54,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5264719800177376437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694908557238991819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b5c32fff129464ba5471e3472aa0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_particleSystem: {fileID: 3694908557893780465}
+  LifeTime: 3
 --- !u!1 &3694908557893780460
 GameObject:
   m_ObjectHideFlags: 0

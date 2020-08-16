@@ -22,9 +22,10 @@ public class GameManager : MonoBehaviour {
 
     public float ConsumemoneyCount;
     PlayerController player;
-    public AudioSource m_Sound;
-    public AudioClip reduceHp;
-    public ParticleSystem p_reduceHp;
+    
+    
+    public EffectManager m_Em;
+
 
     public static GameManager getGM{
         get{
@@ -37,29 +38,39 @@ public class GameManager : MonoBehaviour {
     public float Mood = 100f;
     public float moodMultiplier=100f;//买到好东西的时候回到100
     void Awake () {
+        
+        
+
+        
+        
         gm = this;
-        GameObject.DontDestroyOnLoad(gameObject);
+        
         audioSource = GetComponent<AudioSource>();
     }
     public void Init()
     {
-        m_Sound.playOnAwake=false;
+        
 
         imPoor = false;
         imRich = false;
         HP = 20000;
         Mood = 100;
     }
-
+    public void Destroy()
+    {
+        Destroy(this);
+    }
     public void AddHP(float count){
         HP += count;
-        if(HP>200000000f) HP=200000000f;
+        m_Em.AddEffect();
+        if (HP>200000000f) HP=200000000f;
         hpChange.text = "+" + count.ToString("#0");
     }
     public void ReduceHP(float count){
         HP -= count;
-        m_Sound.clip = reduceHp;
-        m_Sound.Play();
+        
+        m_Em.AddEffect();
+        
         if (HP < 0)
             SceneManager.LoadScene(2);
         hpChange.text = "-" + count.ToString("#0");
