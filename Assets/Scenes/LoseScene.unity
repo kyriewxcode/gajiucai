@@ -1522,7 +1522,6 @@ MonoBehaviour:
   - {fileID: 1078312557}
   - {fileID: 1542370531}
   - {fileID: 1108545526}
-  - {fileID: 0}
   image:
   - {fileID: 21300000, guid: cd635a27ce1df9845b0ec94db825b917, type: 3}
   - {fileID: 21300000, guid: 705907c796f454c4580e66705fac4f1b, type: 3}
