@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TrapEventManager : MonoBehaviour
 {
-    static int[] timeAxis = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 69, 73, 77, 81, 85, 89, 93, 97, 101, 105, 109, 113, 116, 119, 122, 125, 128, 131, 134, 137, 140, 143, 146 };
+    static int[] timeAxis = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 69, 73, 77, 81, 85, 89, 93, 97, 101, 105, 109, 113, 117, 121, 125, 129, 133, 137, 141, 145, 149, 152, 155, 158, 161, 164, 167, 170, 173, 176, 179, 182, 185, 188, 191, 194, 197, 200, 203, 206, 209, 212, 215, 218, 221, 224, 227, 230, 233, 236, 239, 242, 245, 248, 251, 254, 257, 260, 263, 266, 269, 272, 275, 278, 281, 284, 287, 290, 293, 296, 299 };
     int timeAxisIndex;
     EventGroup[] eventGroup = new EventGroup[timeAxis.Length];
 
@@ -29,6 +29,7 @@ public class TrapEventManager : MonoBehaviour
     }
     private void Start()
     {
+        Debug.Log(timeAxis.Length);
         timeAxisIndex = 0;
         addTrapGroup();
         addTrapEvent();

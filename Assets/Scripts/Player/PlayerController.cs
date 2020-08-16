@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovementHandler();
+
+        steamCheck();
     }
 
     private void FixedUpdate() {
@@ -134,6 +136,31 @@ public class PlayerController : MonoBehaviour
             characterMovementVelocity = new Vector3(Mathf.Clamp(characterMovementVelocity.x,Mathf.NegativeInfinity,0f),characterMovementVelocity.y,0f);
         }
     }
-    
-    
+
+    void steamCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position,Vector3.forward,0.1f,1<<LayerMask.NameToLayer("Steam"));
+
+        if (hit.collider!=null)
+        {
+            Debug.Log("Steam");
+        }
+
+    }
+
+
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "Steam")
+        {
+
+            GameManager.getGM.reduceHP(other.GetComponentInParent<SteamSale>().damage);
+            Debug.Log("Steam打折 你又花了" + other.GetComponentInParent<SteamSale>().damage + "块");
+            
+
+        }
+    }
+
+
 }

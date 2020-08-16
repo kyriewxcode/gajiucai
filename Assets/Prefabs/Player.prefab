@@ -115,6 +115,7 @@ MonoBehaviour:
   DashingCooldownTime: 0
   DashingTime: 0.3
   DashSpeedMultiplier: 4
+  movementInput: {x: 0, y: 0, z: 0}
 --- !u!70 &619503267
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

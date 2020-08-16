@@ -9,6 +9,7 @@ public class Trap : MonoBehaviour
     public float activeTime;//激活时间
     protected string _name;//名字
     public Vector3 dir;//方向
+    public float LifeTime;
     public string Name
     {
         set
@@ -32,6 +33,15 @@ public class Trap : MonoBehaviour
     #region MonoBehaviour自身方法
     protected void Update()
     {
+
+        if (Time.time >= activeTime + LifeTime)
+        {
+            Debug.Log("摧毁中");
+            OnDestroy();
+        }
+
+
+
         UpdateEntity(Time.deltaTime, dir);
     }
 
@@ -50,10 +60,11 @@ public class Trap : MonoBehaviour
     public virtual void EnableEntity(Vector3 pos)//启用陷阱
     {
         gameObject.transform.position = pos;
+        activeTime = Time.time;
     }
     protected virtual void UpdateEntity(float detaTime, Vector3 dir)//更新陷阱
     {
-
+        
     }
     public virtual void DisableEntity()//禁用陷阱
     {
@@ -61,7 +72,7 @@ public class Trap : MonoBehaviour
     }
     public virtual void DestroyEntity()//摧毁陷阱
     {
-
+        Destroy(gameObject) ;
     }
     #endregion
 

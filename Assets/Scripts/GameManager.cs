@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
     public int[] ConsumeTimesCount = new int[13];
 
     public float ConsumemoneyCount;
+    PlayerController player;
+    public AudioSource m_Sound;
+    public AudioClip reduceHp;
+    public ParticleSystem p_reduceHp;
 
     public static GameManager getGM{
         get{
@@ -26,6 +30,8 @@ public class GameManager : MonoBehaviour {
     }
     public void Init()
     {
+        m_Sound.playOnAwake=false;
+
         imPoor = false;
         imRich = false;
         HP = 20000;
@@ -38,6 +44,10 @@ public class GameManager : MonoBehaviour {
     }
     public void reduceHP(float count){
         HP = HP - count;
+        m_Sound.clip = reduceHp;
+        m_Sound.Play();
+
+        
     }
     public void addMood(float count){
         Mood+=count;
