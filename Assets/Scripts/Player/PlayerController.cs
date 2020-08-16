@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Animator Anim;
+    AudioSource audioSource;
     public float HorizontalSpeed;
     public float VerticalSpeed;
     public float MovementSharpness;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     float xScale;
     float yScale;
-    bool isRuning;
+
     private void Awake()
     {
         m_playerInputHandler = GetComponent<PlayerInputHandler>();
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         xScale = transform.localScale.x;
         yScale = transform.localScale.y;
         Anim = GetComponent<Animator>();
@@ -62,11 +64,22 @@ public class PlayerController : MonoBehaviour
         movementInput = m_playerInputHandler.GetMoveInput();
         movementInput = movementInput.normalized;
         if(movementInput.x!=0||movementInput.y!=0)
+        {
             Anim.SetBool("Runing",true);
+            if(!IsDashing)
+            {
+                audioSource.clip = GameManager.getGM.audioEffect[2];
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
+            }
+        }
         else
+        {
             Anim.SetBool("Runing",false);
-            
-        if(movementInput.x<-0.1f)
+            audioSource.Pause();
+        }
+
+        if (movementInput.x<-0.1f)
             transform.localScale=new Vector3(xScale,yScale,1);
         else if(movementInput.x>0.1f)
             transform.localScale=new Vector3(-xScale,yScale,1);
@@ -83,11 +96,15 @@ public class PlayerController : MonoBehaviour
     {
         if (m_playerInputHandler.GetDashDown() && DashCDTimeCount>=DashingCooldownTime)
         {
+            audioSource.clip = GameManager.getGM.audioEffect[0];
+            if(!audioSource.isPlaying)
+                audioSource.Play();
             DashTimeCount = 0f;
             IsDashing = true;
         }
         if (DashTimeCount >= DashingTime)
         {
+            audioSource.Pause();
             DashCDTimeCount = 0f;
             speedModifier = 1f;
             IsDashing = false;
