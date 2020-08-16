@@ -11,33 +11,33 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         GameManager.getGM.Init();
-        StartCoroutine("MoodAdd");
+        StartCoroutine("MoodReduce");
         StartCoroutine("HpAdd");
     }
 
     void Update()
     {
-        //moodSlider.value=GameManager.getGM.Mood/100f;
-        //hpSlider.value=GameManager.getGM.HP/20000f;
+        moodSlider.value=GameManager.getGM.Mood;
+        hpSlider.value=GameManager.getGM.HP;
     }
 
-    IEnumerator HpAdd()
+    IEnumerator HpAdd()//工资
     {
         while(GameManager.getGM.HP>=0)
         {
-            yield return new WaitForSeconds(1);
-            GameManager.getGM.addHP(1000000);
-           // Debug.Log(GameManager.getGM.HP);
+            yield return new WaitForSeconds(10);
+            GameManager.getGM.addHP(5000f);
+            Debug.Log(GameManager.getGM.HP);
         }
         yield return null;
     }
 
-    IEnumerator MoodAdd()//开始游戏调用
+    IEnumerator MoodReduce()//心情递减
     {
         while(GameManager.getGM.Mood>=0)
         {
-            GameManager.getGM.reduceMood(2.0f);
-            GameManager.getGM.moodMultiplier-=2.0f;
+            GameManager.getGM.reduceMood(4f);
+            GameManager.getGM.moodMultiplier-=4f;
             yield return new WaitForSeconds(1);
         }
         yield return null;

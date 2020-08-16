@@ -11,8 +11,8 @@ public class SceneLocation : MonoBehaviour
     } 
 
     public SceneType type;
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("Player"))
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Player"))
         {
             Debug.Log("碰到");
             if(type==SceneType.售楼中心)
@@ -26,10 +26,10 @@ public class SceneLocation : MonoBehaviour
             {
                 StartCoroutine("Investing");
             }
-        }
+        } 
     }
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.collider.CompareTag("Player"))
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Player"))
         {
             if(type==SceneType.证券交易所)
             {
