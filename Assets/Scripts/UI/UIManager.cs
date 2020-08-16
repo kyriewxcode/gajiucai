@@ -7,8 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public Slider hpSlider;
     public Text hpText;
+
     public Slider moodSlider;
     public Text moodText;
+
     AudioSource audioSource;
     public Text wagesTime;
     int wagestime = 10;
@@ -53,7 +55,7 @@ public class UIManager : MonoBehaviour
         while(GameManager.getGM.Mood>=0)
         {
             GameManager.getGM.ReduceMood(4f);
-            GameManager.getGM.moodMultiplier =GameManager.getGM.Mood+50;
+            GameManager.getGM.moodMultiplier =GameManager.getGM.Mood+20;
             yield return new WaitForSeconds(1);
         }
         yield return null;
