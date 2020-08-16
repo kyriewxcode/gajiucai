@@ -31,7 +31,7 @@ public class BaoDaoTrap : Trap
 
             if (collision.gameObject.tag=="Player"&& IsTriggered == false)
             {
-                GameManager.getGM.reduceHP(damage);
+                GameManager.getGM.ReduceHP(damage);
                 Debug.Log("你被🔪砍中了，减"+damage+"元");
                 IsTriggered = true;
             }

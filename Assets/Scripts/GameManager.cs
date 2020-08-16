@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
     private static GameManager gm;
+
+
+    public Text moodChange;
+    public Text hpChange;
 
     public bool imRich;
     public bool imPoor;
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour {
     public void AddHP(float count){
         HP += count;
         if(HP>200000000f) HP=200000000f;
+        hpChange.text = "+" + count.ToString("#0");
     }
     public void ReduceHP(float count){
         HP -= count;
@@ -56,19 +62,20 @@ public class GameManager : MonoBehaviour {
         m_Sound.Play();
         if (HP < 0)
             SceneManager.LoadScene(2);
+        hpChange.text = "-" + count.ToString("#0");
     }
     public void AddMood(float count){
         Mood+=count;
         if(Mood>100) Mood=100;
+        moodChange.text = "+" + count.ToString("#0") + "%";
     }
     public void ReduceMood(float count){
         Mood-=count* moodMultiplier/100;
+        moodChange.text = "-"+ (count* moodMultiplier/ 100).ToString("#0") + "%";
 
         if (Mood < 0)
             SceneManager.LoadScene(2);
 
-        Debug.Log(Mood);
-        Debug.Log(moodMultiplier);
         if (Mood >= 80f)
         {
             audioSource.clip = BGM[1];

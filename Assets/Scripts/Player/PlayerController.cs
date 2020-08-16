@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Steam")
         {
 
-            GameManager.getGM.reduceHP(other.GetComponentInParent<SteamSale>().damage);
+            GameManager.getGM.ReduceHP(other.GetComponentInParent<SteamSale>().damage);
             Debug.Log("Steam打折 你又花了" + other.GetComponentInParent<SteamSale>().damage + "块");
             
 

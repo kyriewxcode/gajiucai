@@ -17,7 +17,7 @@ public class Mai1Song1 : Trap
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameManager.getGM.reduceHP(damage);
+            GameManager.getGM.ReduceHP(damage);
             Debug.Log("你忍不住剁手，花了" + damage + "块");
             Destroy(gameObject);
         }
