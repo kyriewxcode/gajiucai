@@ -53,7 +53,7 @@ public class TrapEventManager : MonoBehaviour
                 eventGroup[n].TrapType[i] = trapGroup[n][ranNum];
 
 
-                Debug.Log(eventGroup[n].TrapType[i]);
+//                Debug.Log(eventGroup[n].TrapType[i]);
             }
             
         }
